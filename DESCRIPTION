@@ -1,0 +1,26 @@
+Package: squeal
+Title: Tooling for Working with SQL Servers
+Version: 0.0.0.9999
+Authors@R: 
+    person("Alexander", "Senetcky", , "alexander.senetcky@ct.gov", 
+               role = c("aut", "cre", "cph"),
+               comment = c(ORCID = "0009-0009-3730-5397"))
+Description: Make working with SQL servers a breeze!
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    checkmate (>= 2.3.2),
+    purrr (>= 1.0.2),
+    DBI (>= 1.2.3),
+    dbplyr (>= 2.5.0),
+    dplyr (>= 1.1.4),
+    stringr (>= 1.5.1),
+    rlang (>= 1.1.4),
+Depends: 
+    R (>= 4.1.0)
+Suggests: 
+    remotes (>= 2.5.0.9000),
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
