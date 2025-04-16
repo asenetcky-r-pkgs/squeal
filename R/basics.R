@@ -20,11 +20,12 @@
 #' )
 #' }
 append_table <- function(
-    .data,
-    conn,
-    database,
-    schema,
-    table) {
+  .data,
+  conn,
+  database,
+  schema,
+  table
+) {
   table_target <-
     check_connection(
       conn,
@@ -33,7 +34,7 @@ append_table <- function(
       table
     )
 
-  helpers::assert_dataframe_with_data(.data)
+  succor::assert_dataframe_with_data(.data)
 
   DBI::dbAppendTable(
     conn,
@@ -64,10 +65,11 @@ append_table <- function(
 #' )
 #' }
 truncate_table <- function(
-    conn,
-    database,
-    schema,
-    table) {
+  conn,
+  database,
+  schema,
+  table
+) {
   # validate user input
   check_connection(
     conn,
@@ -117,10 +119,11 @@ truncate_table <- function(
 #' )
 #' }
 survey_table <- function(
-    conn,
-    database,
-    schema,
-    table) {
+  conn,
+  database,
+  schema,
+  table
+) {
   # set global bindings
   table_catalog <- table_schema <- table_name <- NULL
 
@@ -144,14 +147,11 @@ survey_table <- function(
     statement = snapshot_statement
   ) |>
     dplyr::as_tibble() |>
-    helpers::rename_with_stringr() |>
+    succor::rename_with_stringr() |>
     dplyr::filter(
-      stringr::str_to_lower(table_catalog) ==
-        stringr::str_to_lower(database) &
-        stringr::str_to_lower(table_schema) ==
-          stringr::str_to_lower(schema) &
-        stringr::str_to_lower(table_name) ==
-          stringr::str_to_lower(table)
+      stringr::str_to_lower(table_catalog) == stringr::str_to_lower(database) &
+        stringr::str_to_lower(table_schema) == stringr::str_to_lower(schema) &
+        stringr::str_to_lower(table_name) == stringr::str_to_lower(table)
     )
 }
 
@@ -183,11 +183,12 @@ survey_table <- function(
 #' )
 #' }
 read_table <- function(
-    conn,
-    database,
-    schema,
-    table,
-    lazy = FALSE) {
+  conn,
+  database,
+  schema,
+  table,
+  lazy = FALSE
+) {
   # table to read from SQL
   table_target <-
     check_connection(
@@ -227,11 +228,12 @@ read_table <- function(
 #' )
 #' }
 create_table <- function(
-    .data,
-    conn,
-    database,
-    schema,
-    table) {
+  .data,
+  conn,
+  database,
+  schema,
+  table
+) {
   table_target <-
     make_table_target(
       conn,
@@ -240,7 +242,7 @@ create_table <- function(
       table
     )
 
-  helpers::assert_dataframe_with_data(.data)
+  succor::assert_dataframe_with_data(.data)
 
   DBI::dbWriteTable(
     conn,
@@ -268,10 +270,11 @@ create_table <- function(
 #' )
 #' }
 nuke_table <- function(
-    conn,
-    database,
-    schema,
-    table) {
+  conn,
+  database,
+  schema,
+  table
+) {
   # validate user input
   table_target <-
     check_connection(
@@ -312,7 +315,7 @@ make_table_target <- function(conn, database, schema, table) {
     checkmate::check_class(database, "character"),
     checkmate::check_class(schema, "character"),
     checkmate::check_class(table, "character"),
-    checkmate::check_class(conn, "Microsoft SQL Server"),
+    checkmate::check_class(conn, "DBIConnection"),
     combine = "and"
   )
 
@@ -347,4 +350,39 @@ table_or_lazy <- function(table_target, conn, lazy) {
 
   if (!lazy) table <- dplyr::collect(table)
   table
+}
+
+#' Truncate and Append a SQL table - Preserving Structure
+#'
+#' Truncate and append data to a SQL table without losing
+#' SQL identities and without changing the table structure.
+#'
+#' @inheritParams append_table
+#'
+#' @family basics
+#'
+#'
+#' @returns A scalar numeric.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' overwrite_table(
+#'   .data = my_dataframe,
+#'   conn = my_connection,
+#'   database = "my_database",
+#'   schema = "my_schema",
+#'   table = "my_table"
+#' )
+#' }
+overwrite_table <- function(
+  .data,
+  conn,
+  database,
+  schema,
+  table
+) {
+  succor::assert_dataframe_with_data(.data)
+  truncate_table(conn, database, schema, table)
+  append_table(.data, conn, database, schema, table)
 }

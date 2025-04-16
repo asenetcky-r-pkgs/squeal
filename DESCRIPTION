@@ -1,8 +1,8 @@
 Package: squeal
-Title: Tooling for Working with SQL Servers
+Title: Template for Internal Packages Working with SQL Servers
 Version: 0.1.0
 Authors@R: 
-    person("Alexander", "Senetcky", , "alexander.senetcky@ct.gov", 
+    person("Alexander", "Senetcky", , "asenetcky@gmail.com", 
                role = c("aut", "cre", "cph"),
                comment = c(ORCID = "0009-0009-3730-5397"))
 Description: Make working with SQL servers a breeze!
@@ -12,7 +12,6 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
     checkmate (>= 2.3.2),
-    purrr (>= 1.0.2),
     DBI (>= 1.2.3),
     dbplyr (>= 2.5.0),
     dplyr (>= 1.1.4),
@@ -26,4 +25,4 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Remotes:
-    git:https://github.com/asenetcky-r-pkgs/succor.git
+    https://github.com/asenetcky-r-pkgs/succor.git
