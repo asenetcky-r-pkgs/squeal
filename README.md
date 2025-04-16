@@ -4,6 +4,8 @@
 # squeal
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/asenetcky-r-pkgs/squeal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/asenetcky-r-pkgs/squeal/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `squeal` makes working with the DPH SQL servers a breeze. There are

@@ -26,3 +26,4 @@ Suggests:
 Config/testthat/edition: 3
 Remotes:
     https://github.com/asenetcky-r-pkgs/succor.git
+URL: https://asenetcky-r-pkgs.github.io/squeal/
