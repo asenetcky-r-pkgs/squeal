@@ -1,6 +1,6 @@
 Package: squeal
 Title: Tooling for Working with SQL Servers
-Version: 0.0.0.9999
+Version: 0.1.0
 Authors@R: 
     person("Alexander", "Senetcky", , "alexander.senetcky@ct.gov", 
                role = c("aut", "cre", "cph"),
@@ -27,4 +27,3 @@ Suggests:
 Config/testthat/edition: 3
 Remotes:
     git:https://github.com/asenetcky-r-pkgs/succor.git
-
