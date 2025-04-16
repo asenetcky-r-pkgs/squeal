@@ -8,10 +8,12 @@
 [![R-CMD-check](https://github.com/asenetcky-r-pkgs/squeal/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/asenetcky-r-pkgs/squeal/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-`squeal` makes working with the DPH SQL servers a breeze. There are
-basic functions for the most common tasks and domain-specific wrappers
-that make working with `DPH_ODP`, various facts and dimensions easier,
-faster to program and safer to execute.
+`squeal` makes working with the SQL servers a breeze. There are basic
+functions for the most common tasks easier and faster to program and
+safer to execute. `squeal` is primarily meant to serve as a template for
+internal/private packages where it is a base to layer wrapper functions
+with pre-filled arguments for ease of use and standardizing SQL
+einteractions across a team.
 
 ## Installation
 
